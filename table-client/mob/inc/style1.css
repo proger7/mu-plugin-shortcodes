@@ -72,7 +72,7 @@
 }
 .shortcode-wp_cr-table-style-23 .shortcode-wp_reviews-list {
     border-radius: 15px;
-    border: 1px solid #d5dcf0;
+    border: none; /* 1px solid #d5dcf0  */
     background-color: #fff;
 }
 .shortcode-wp_cr-table-style-23 .shortcode-wp_reviews-list .shortcode-wp_review-item.shortcode-wp_highlight {

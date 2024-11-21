@@ -114,14 +114,20 @@ if ( ! function_exists( 'customNewTableLayouts' ) ) {
                 $tableHTML .= '<div class="wp_shortcode-bridelist_cpm-ajax-info wp_shortcode-bridelist_cpm-advertiser-disclosure"></div></div>';
                 $tableHTML .= '<div class="wp_shortcode-bridelist_reviews-list">';
 
+                $itemIndex = 0;
                 foreach ($newOffersArray as $arr_key => $offer) {
-                    $highlightClass = $arr_key == 0 ? 'wp_shortcode-bridelist_highlight' : '';
+                    $highlightClass = $itemIndex == 0 ? 'wp_shortcode-bridelist_highlight' : '';
                     $imageSrc = "https://cdn.cdndating.net/images/" . esc_attr($arr_key) . ".png";
                     $userRating = mt_rand(40, 50) / 10;
                     $rating = mt_rand(14, 20) / 2;
                     $offerLinkURL = site_url() . "/out/offer.php?id=" . esc_attr($offer['linkID']) . "&o=" . urlencode($arr_key) . "&t=dating";
 
                     $tableHTML .= '<div class="wp_shortcode-bridelist_review-item ' . $highlightClass . '">';
+
+                    if ($itemIndex == 0) {
+                        $tableHTML .= '<div class="wp_shortcode-bridelist_review-site-label wp_shortcode-bridelist_mobile-only">Site of the day</div>';
+                    }
+
                     $tableHTML .= '<div class="wp_shortcode-bridelist_review-logo wp_shortcode-bridelist_partner-link"><img src="' . esc_url($imageSrc) . '" width="180" height="60" class="wp_shortcode-bridelist_cr-logotype-logo wp_shortcode-bridelist_lazyloaded"></div>';
                     
 
@@ -152,6 +158,8 @@ if ( ! function_exists( 'customNewTableLayouts' ) ) {
                                         <a href="' . esc_url($offerLinkURL) . '" target="_blank" class="wp_shortcode-bridelist_cr-btn wp_shortcode-bridelist_partner-link">Visit Site</a>
                                     </div>';
                     $tableHTML .= '</div>';
+
+                    $itemIndex++;
                 }
 
                 $tableHTML .= '</div></div>';
@@ -174,14 +182,18 @@ if ( ! function_exists( 'customNewTableLayouts' ) ) {
                 $tableHTML .= '<div class="wp_shortcode-toplist_cpm-ajax-info wp_shortcode-toplist_cpm-advertiser-disclosure"></div></div>';
                 $tableHTML .= '<div class="wp_shortcode-toplist_reviews-list">';
 
+                $elementIndex = 0;
                 foreach ($newOffersArray as $arr_key => $offer) {
-                    $highlightClass = $arr_key == 0 ? 'wp_shortcode-toplist_highlight' : '';
+                    $highlightClass = $elementIndex == 0 ? 'wp_shortcode-toplist_highlight' : '';
                     $imageSrc = "https://cdn.cdndating.net/images/" . esc_attr($arr_key) . ".png";
                     $userRating = mt_rand(40, 50) / 10;
                     $rating = mt_rand(14, 20) / 2;
                     $offerLinkURL = site_url() . "/out/offer.php?id=" . esc_attr($offer['linkID']) . "&o=" . urlencode($arr_key) . "&t=dating";
 
                     $tableHTML .= '<div class="wp_shortcode-toplist_review-item ' . $highlightClass . '">';
+                    if ($elementIndex == 0) {
+                        $tableHTML .= '<div class="wp_shortcode-toplist_review-site-label">Site of the day</div>';
+                    }
                     $tableHTML .= '<div class="wp_shortcode-toplist_review-logo wp_shortcode-toplist_partner-link"><img src="' . esc_url($imageSrc) . '" width="180" height="60" class="wp_shortcode-toplist_cr-logotype-logo wp_shortcode-toplist_lazyloaded"></div>';
                     
                     $tableHTML .= '<div class="wp_shortcode-toplist_review-description wp_shortcode-toplist_inner-container wp_shortcode-toplist_mobile-only">';
@@ -210,9 +222,12 @@ if ( ! function_exists( 'customNewTableLayouts' ) ) {
                                         <a href="' . esc_url($offerLinkURL) . '" target="_blank" class="wp_shortcode-toplist_cr-btn wp_shortcode-toplist_partner-link">Visit Site</a>
                                     </div>';
                     $tableHTML .= '</div>';
+
+                    $elementIndex++;
                 }
 
                 $tableHTML .= '</div></div>';
+
         }
 
         return $tableHTML;
